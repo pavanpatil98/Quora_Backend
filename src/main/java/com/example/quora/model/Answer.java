@@ -23,9 +23,9 @@ public class Answer extends BaseModel{
     protected User answeringUser;
 
     @OneToMany(mappedBy = "commentedAnswer",cascade = CascadeType.ALL)
-    List<Comment> comments = new ArrayList<>();
+    List<Comment> comments;
 
     @OneToMany(mappedBy = "likeAnswer",cascade = CascadeType.ALL)
-    List<Likes> likes = new ArrayList<>();
+    List<Likes> likes;
 
 }

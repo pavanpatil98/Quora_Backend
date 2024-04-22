@@ -2,6 +2,7 @@ package com.example.quora.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Builder(builderMethodName = "questionBuilder")
+@SuperBuilder(builderMethodName = "questionBuilder")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Question extends BaseModel{
@@ -20,5 +21,5 @@ public class Question extends BaseModel{
     protected User questioningUser;
 
     @OneToMany(mappedBy = "question",cascade = CascadeType.ALL)
-    protected List<Answer> answers = new ArrayList<>();
+    protected List<Answer> answers;
 }

@@ -2,6 +2,7 @@ package com.example.quora.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -14,7 +15,10 @@ import java.util.Date;
 @MappedSuperclass
 @Getter
 @Setter
-public class BaseModel {
+@NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder
+public abstract class BaseModel {
     @Id // this annotation makes the id property a primary key of our table
     @GeneratedValue(strategy = GenerationType.TABLE) // Identity means auto_increment
     protected Long id;
