@@ -33,6 +33,8 @@ public class AnswerController {
                     .createdAt(answer.getCreatedAt())
                     .updatedAt(answer.getUpdatedAt())
                     .answer(answer.getAnswer())
+                    .userId(answer.getAnsweringUser().getId())
+                    .questionId(answer.getQuestion().getId())
                     .build();
             return new ResponseEntity<>(answerResponse, HttpStatus.CREATED);
         }

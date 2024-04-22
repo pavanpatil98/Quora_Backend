@@ -3,7 +3,9 @@ package com.example.quora.service;
 import com.example.quora.model.Answer;
 import com.example.quora.repositories.AnswerRepository;
 import com.example.quora.repositories.QuestionRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AnswerService {
     AnswerRepository answerRepository;
 

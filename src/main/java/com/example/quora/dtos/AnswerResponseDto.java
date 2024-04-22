@@ -11,6 +11,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class AnswerResponseDto {
     private Long id;
+    private Long userId;
+    private Long questionId;
     private Date createdAt;
     private Date updatedAt;
     private String answer;
