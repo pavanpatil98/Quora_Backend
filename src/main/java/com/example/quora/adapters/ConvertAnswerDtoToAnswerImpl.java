@@ -27,7 +27,7 @@ public class ConvertAnswerDtoToAnswerImpl implements ConvertAnswerDtoToAnswer {
     @Override
     public Answer createAnswer(AnswerRequestDto answerRequestDto) throws EntityNotFoundException {
         //check if user is valid
-        Long userId = answerRequestDto.getUserid();
+        Long userId = answerRequestDto.getUserId();
         Optional<User> user = userService.checkUser(userId);
 
         //check if question is valid

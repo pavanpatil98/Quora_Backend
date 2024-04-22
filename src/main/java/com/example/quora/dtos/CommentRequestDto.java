@@ -7,9 +7,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AnswerRequestDto {
+public class CommentRequestDto {
     private Long userId;
-    private Long questionId;
-    private String answer;
+    private Long answerId;
+    private  String comment;
 }
-

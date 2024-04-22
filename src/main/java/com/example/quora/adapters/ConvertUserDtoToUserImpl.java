@@ -1,14 +1,10 @@
 package com.example.quora.adapters;
 
-import com.example.quora.dtos.UserRequestResponseDto;
+import com.example.quora.dtos.UserRequestDto;
 import com.example.quora.model.User;
-import com.example.quora.repositories.UserRepository;
 import com.example.quora.service.UserService;
 import jakarta.persistence.EntityExistsException;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Optional;
 
 @Component
 public class ConvertUserDtoToUserImpl implements ConvertUserDtoToUser{
@@ -20,7 +16,7 @@ public class ConvertUserDtoToUserImpl implements ConvertUserDtoToUser{
     }
 
     @Override
-    public User createUser(UserRequestResponseDto userDto) throws EntityExistsException {
+    public User createUser(UserRequestDto userDto) throws EntityExistsException {
         User user = userService.checkUserName(userDto.getUsername(), userDto.getEmailId());
 
         if(user != null){

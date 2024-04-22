@@ -1,10 +1,9 @@
 package com.example.quora.controllers;
 
 import com.example.quora.adapters.ConvertUserDtoToUser;
-import com.example.quora.dtos.UserRequestResponseDto;
+import com.example.quora.dtos.UserRequestDto;
 import com.example.quora.model.User;
 import com.example.quora.service.UserService;
-import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +32,7 @@ public class UserController {
     }
 
     @PostMapping()
-    public ResponseEntity<?> addUser(@RequestBody UserRequestResponseDto userDto){
+    public ResponseEntity<?> addUser(@RequestBody UserRequestDto userDto){
         try{
             User user = convertUserDtoToUser.createUser(userDto);
             userService.addUser(user);
