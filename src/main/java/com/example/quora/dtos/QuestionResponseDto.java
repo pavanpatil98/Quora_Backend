@@ -22,5 +22,5 @@ public class QuestionResponseDto {
     private Date createdAt;
     private Date updatedAt;
     protected String question;
-    protected User questioningUser;
+    protected Long questioningUserId;
 }

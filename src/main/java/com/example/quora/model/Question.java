@@ -3,6 +3,8 @@ package com.example.quora.model;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,5 +23,6 @@ public class Question extends BaseModel{
     protected User questioningUser;
 
     @OneToMany(mappedBy = "question",cascade = CascadeType.ALL)
+    @Fetch(FetchMode.SUBSELECT)
     protected List<Answer> answers;
 }

@@ -29,13 +29,13 @@ public class QuestionController {
     public  ResponseEntity<?> addQuestion(@RequestBody QuestionRequestDto questionRequestDto){
         try{
             Question question = convertQuestionDtoToQuestion.createQuestion(questionRequestDto);
-            QuestionResponseDto response = QuestionResponseDto.builder()
+            QuestionResponseDto questionResponse = QuestionResponseDto.builder()
                     .id(question.getId())
                     .createdAt(question.getCreatedAt())
                     .updatedAt(question.getUpdatedAt())
                     .question(question.getQuestion())
-                    .questioningUser(question.getQuestioningUser()).build();
-            return new ResponseEntity<>(response,HttpStatus.CREATED);
+                    .questioningUserId(question.getQuestioningUser().getId()).build();
+            return new ResponseEntity<>(questionResponse,HttpStatus.CREATED);
         }
         catch (Exception exception){
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
