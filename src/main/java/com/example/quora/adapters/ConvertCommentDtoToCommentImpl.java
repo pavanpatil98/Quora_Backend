@@ -39,7 +39,7 @@ public class ConvertCommentDtoToCommentImpl implements ConvertCommentDtoToCommen
         Optional<Answer> answer = answerService.checkAnswer(answerId);
 
         if (user.isEmpty()) {
-            throw new EntityNotFoundException("User with " + userId + " does not exist");
+            throw new EntityNotFoundException("User with id " + userId + " does not exist");
         } else if (answer.isEmpty()) {
             throw new EntityNotFoundException("Answer with " + answerId + " does not exist");
         } else {

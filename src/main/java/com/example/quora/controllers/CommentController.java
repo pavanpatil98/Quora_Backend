@@ -29,7 +29,7 @@ public class CommentController {
     public ResponseEntity<?> addComment(@RequestBody CommentRequestDto commentRequestDto){
         try{
             Comment comment = convertCommentDtoToCommentImpl.createComment(commentRequestDto);
-            CommentResponseDto commentResponse = CommentResponseDto.builder().id(comment.getId()).createdAt(comment.getCreatedAt()).updatedAt(comment.getUpdatedAt()).answerId(comment.getCommentedAnswer().getId()).userId(comment.getCommentingUser().getId()).build();
+            CommentResponseDto commentResponse = CommentResponseDto.builder().id(comment.getId()).createdAt(comment.getCreatedAt()).updatedAt(comment.getUpdatedAt()).answerId(comment.getCommentedAnswer().getId()).userId(comment.getCommentingUser().getId()).comment(comment.getComment()).build();
             return new ResponseEntity<>(commentResponse, HttpStatus.CREATED);
         }
         catch (Exception exception){
