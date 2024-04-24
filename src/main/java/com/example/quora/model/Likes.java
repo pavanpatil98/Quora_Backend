@@ -16,5 +16,5 @@ public class Likes extends BaseModel{
     @ManyToOne(fetch = FetchType.LAZY)
     Answer likeAnswer;
 
-    long likeCount;
+    Long likesCount;
 }

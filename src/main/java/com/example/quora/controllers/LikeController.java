@@ -23,16 +23,16 @@ public class LikeController {
     @PostMapping()
     public ResponseEntity<?> addLike(@RequestBody LikeRequestDto likeRequestDto){
         try{
-        Likes like = convertLikeDtoToLike.createLike(likeRequestDto);
-        LikeResponseDto likeResponseDto = LikeResponseDto.builder()
-                                            .id(like.getId())
-                                            .createdAt(like.getCreatedAt())
-                                            .updatedAt(like.getUpdatedAt())
-                                            .answerId(like.getLikeAnswer().getId())
-                                            .likesCount(like.getLikeCount())
-                                            .build();
+            Likes like = convertLikeDtoToLike.createLike(likeRequestDto);
+            LikeResponseDto likeResponseDto = LikeResponseDto.builder()
+                                                .id(like.getId())
+                                                .createdAt(like.getCreatedAt())
+                                                .updatedAt(like.getUpdatedAt())
+                                                .answerId(like.getLikeAnswer().getId())
+                                                .likesCount(like.getLikesCount())
+                                                .build();
 
-        return new ResponseEntity<>(likeResponseDto, HttpStatus.CREATED);
+            return new ResponseEntity<>(likeResponseDto, HttpStatus.CREATED);
         }
         catch (Exception exception){
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);

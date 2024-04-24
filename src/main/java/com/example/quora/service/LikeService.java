@@ -1,17 +1,20 @@
 package com.example.quora.service;
 
+import com.example.quora.model.Answer;
 import com.example.quora.model.Comment;
 import com.example.quora.model.Likes;
 import com.example.quora.repositories.CommentRepository;
 import com.example.quora.repositories.LikeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class LikeService {
     LikeRepository likeRepository;
 
 
-    public LikeService(LikeRepository likeServiceRepository){
+    public LikeService(LikeRepository likeRepository){
         this.likeRepository = likeRepository;
     }
 
@@ -19,7 +22,13 @@ public class LikeService {
         return this.likeRepository.save(likes);
     }
 
-    public Long getLikesCount(Long answerId){
-        return this.likeRepository.countById(answerId);
+    public Optional<Likes> getLike(Answer answer){
+       return this.likeRepository.findByLikeAnswer(answer);
     }
+
+    public void updateLikesCount(Long likesCount, Answer answer){
+        this.likeRepository.updateLikesByAnswer(likesCount,answer);
+    }
+
+
 }

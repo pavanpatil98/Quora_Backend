@@ -29,9 +29,27 @@ public class ConvertLikeDtoToLikeImpl implements ConvertLikeDtoToLike{
             throw new EntityNotFoundException("Answer with id " + answerId + " does not exist");
         }
         else{
-            long likesCount = likeService.getLikesCount(answerId)+1;
-            Likes likes = Likes.likeBuilder().likeAnswer(answer.get()).likeCount(likesCount).build();
-            likeService.addLike(likes);
+            Likes likes = null;
+            Optional<Likes> likesOptional = likeService.getLike(answer.get());
+
+            if(likesOptional.isEmpty()){
+                long likesCount = 1;
+                likes = Likes.likeBuilder().likeAnswer(answer.get()).likesCount(likesCount).build();
+                System.out.println(likes.getLikesCount());
+                likeService.addLike(likes);
+            }
+            else{
+                Long likesCount = likesOptional.get().getLikesCount()+1;
+                System.out.println(likesCount);
+                likes = Likes.likeBuilder()
+                        .id(likesOptional.get().getId())
+                        .createdAt(likesOptional.get().getCreatedAt())
+                        .updatedAt(likesOptional.get().getUpdatedAt())
+                        .likeAnswer(answer.get())
+                        .likesCount(likesCount)
+                        .build();
+                likeService.updateLikesCount(likesCount,answer.get());
+            }
             return likes;
         }
     }
