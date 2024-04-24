@@ -54,7 +54,6 @@ public class UserController {
             System.out.println(exception.getMessage());
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
         }
-
     }
 
     @DeleteMapping("/{userId}")

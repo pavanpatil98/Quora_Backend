@@ -7,6 +7,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,4 +25,24 @@ public class QuestionService {
     public Optional<Question> checkQuestion(Long id){
         return this.questionRepository.findById(id);
     }
+
+    public void delete(Long id){
+        Optional<Question> questionOptional = checkQuestion(id);
+        if(questionOptional.isEmpty()){
+            System.out.println("Question does not exist");
+            throw new EntityNotFoundException("Question with provided id does not exist");
+        }
+        else{
+            this.questionRepository.deleteById(id);
+        }
+    }
+
+    public List<Question> getAllQuestions(){
+        return this.questionRepository.findAll();
+    }
+
+    public Optional<Question> getQuestion(Long questionId){
+        return this.questionRepository.findById(questionId);
+    }
+
 }
