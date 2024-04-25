@@ -7,6 +7,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,13 @@ public class QuestionService {
         else{
             this.questionRepository.deleteById(id);
         }
+    }
+    public List<Question> getUsersQuestions(List<User> userIds){
+        return this.questionRepository.findAllByQuestioningUserIn(userIds);
+    }
+
+    public List<Question> getQuestions(User user){
+        return this.questionRepository.findByQuestioningUser(user);
     }
 
     public List<Question> getAllQuestions(){

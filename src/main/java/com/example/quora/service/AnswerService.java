@@ -44,4 +44,10 @@ public class AnswerService {
     public Optional<Answer> getAnswer(Long questionId){
         return this.answerRepository.findById(questionId);
     }
+
+    public List<Answer> getAnswer(Question question){
+        return this.answerRepository.findAllByQuestion(question);
+    }
+
+
 }

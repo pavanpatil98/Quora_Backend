@@ -58,6 +58,12 @@ public class UserService{
         //findAllByUserNameAndEmailId();
     }
 
+    public List<User> getUsers(List<Long> userIds){
+        return this.userRepository.findAllByIdIn(userIds);
+    }
+
+
+
 
 
 

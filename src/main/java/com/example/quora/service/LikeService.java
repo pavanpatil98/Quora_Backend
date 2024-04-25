@@ -56,5 +56,9 @@ public class LikeService {
     }
 
 
+    public List<Answer> getTopNLikes(int limit,List<Answer> answer){
+        return this.likeRepository.findTopNByOrderByLikesDesc(limit,answer);
+    }
+
 
 }

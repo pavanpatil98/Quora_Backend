@@ -25,4 +25,8 @@ public interface LikeRepository  extends JpaRepository<Likes,Long>{
     @Query("UPDATE Likes l SET l.likesCount = :newCount WHERE l.likeAnswer = :answer")
     void updateLikesByAnswer(@Param("newCount") Long likesCount, @Param("answer") Answer answer);
 
+
+    @Query(value = "SELECT l.likeAnswer FROM Likes l WHERE l.likeAnswer in :answers ORDER BY l.likesCount DESC LIMIT :limit")
+    List<Answer> findTopNByOrderByLikesDesc(@Param("limit") int limit,@Param("answers") List<Answer> answers);
+
 }
